@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    /* position: relative; */
+    overflow: hidden;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin: 0px;
+    min-height: 100vh;
+    gap: 10vh;
+}
+
+/* Language Button */
+#language-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 1vh 1.4vw;
+    background-color: #800080;
+    color: white;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+#language-btn:hover {
+    background-color: #660066;
+}
+
+.main {
+    display: flex;
+    gap: 5vw;
+}
+
+/* Logo */
+.logo {
+    display: inline-block;
+    max-width: fit-content;
+    max-height: fit-content;
+    cursor: pointer;
+}
+.logo img {
+    display: block;
+    width: 32em;           
+    height: auto; 
+}
+
+/* Navigation */
+.nav-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.nav-button {
+    text-align: center;
+    
+}
+
+.nav-button:hover {
+    cursor: pointer;
+}
+
+.nav-button img {
+    width: 15em;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-button p {
+    font-size: 2em;
+}
+
+/* Gradient Bar */
+.gradient-bar {
+    width: 100%;
+    background: linear-gradient(to right, #ff007f, #800080);
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+#running-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    animation: running-text 10s linear infinite;
+}
+#kontakt-content {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: black;
+    text-align: left;
+    width: 60vw;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Text scroll animation */
+@keyframes running-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
