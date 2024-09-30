@@ -2,29 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: coolvetica, sans-serif;
 }
 body {
-    font-family: Arial, sans-serif;
     background-color: white;
     display: flex;
-    flex-direction: row;
-    min-height: 100vh;
-    /* position: relative; */
     overflow: hidden;
-    justify-content: center;
-    align-content: flex-start;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    margin: 0px;
     min-height: 100vh;
-    gap: 10vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
 }
 
 /* Language Button */
 #language-btn {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    align-self: end;
     padding: 1vh 1.4vw;
     background-color: #800080;
     color: white;
@@ -39,7 +31,8 @@ body {
 
 .main {
     display: flex;
-    gap: 5vw;
+    gap: 10vw;
+    align-items: flex-end;
 }
 
 /* Logo */
@@ -51,31 +44,37 @@ body {
 }
 .logo img {
     display: block;
-    width: 32em;           
+    width: 25em;           
     height: auto; 
 }
 
 /* Navigation */
 .nav-container {
     display: flex;
-    gap: 50px;
+    gap: 8vw;
     align-items: center;
 }
 
 .nav-button {
+    background: none;
+    border: none;
+    padding: 0;
     text-align: center;
-    
-}
-
-.nav-button:hover {
-    cursor: pointer;
+    display: inline-block;
 }
 
 .nav-button img {
-    width: 15em;
+    width: 8.5em;
     height: auto;
     display: block;
     margin: 0 auto;
+    transition: transform 0.3s ease; 
+}
+
+.nav-button img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .nav-button p {
@@ -100,6 +99,12 @@ body {
     box-sizing: border-box;
     animation: running-text 10s linear infinite;
 }
+#projektid-content {
+    
+}
+#projektid-content p {
+    font-size: 1.1em;
+}
 #kontakt-content {
     font-size: 1.2em;
     margin-top: 20px;
@@ -110,7 +115,12 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
+@font-face {
+    font-family: 'Coolvetica';
+    src: url('fonts/COOLVETICA.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Text scroll animation */
 @keyframes running-text {
     0% {
