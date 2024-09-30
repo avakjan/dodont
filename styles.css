@@ -106,14 +106,16 @@ body {
     font-size: 1.1em;
 }
 #kontakt-content {
-    font-size: 1.2em;
-    margin-top: 20px;
+    font-size: 2em;
     color: black;
     text-align: left;
-    width: 60vw;
+    width: 50vw;
     flex-flow: wrap;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
+    align-self: flex-start;
+    margin-left: 16vw;
 }
 @font-face {
     font-family: 'Coolvetica';
