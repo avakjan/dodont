@@ -11,30 +11,35 @@
     <!-- Language Change Button -->
     <button id="language-btn" onclick="changeLanguage()">Est</button>
     <div class="main">
-        <div class="logo">
-            <img src="./images/Logo.png" alt="Logo" onclick="resetPage()">
+        <div class="logo" onclick="resetPage()">
+            <img id="logo-img" src="./images/Logo.png" alt="Logo">
+            <img class="hover-img" src="./images/LogoGrad.png" alt="Logo Gradient">
         </div>
     
         <!-- Navigation buttons -->
         <div class="nav-container">
             <div class="nav-button" id="meist-btn" onclick="showMeist()">
                 <img id="meist-img" src="./images/meist.png" alt="Meist">
+                <img class="hover-img" src="./images/meistGrad.png" alt="Meist Grad">
                 <p>Meist</p>
             </div>
             <div class="nav-button" id="projektid-btn" onclick="showProjektid()">
                 <img id="projektid-img" src="./images/projektid.png" alt="Projektid">
+                <img class="hover-img" src="./images/projektidGrad.png" alt="Projektid Grad">
                 <p>Projektid</p>
             </div>
             <div class="nav-button" id="kontakt-btn" onclick="showKontakt()">
                 <img id="kontakt-img" src="./images/kontakt.png" alt="Kontakt">
+                <img class="hover-img" src="./images/kontaktGrad.png" alt="Kontakt Grad">
                 <p>Kontakt</p>
             </div>
         </div>
         
+        
     </div>
     <div id="meist-content" style="display: none;">
         <p>
-            Asutatud aastal 2024, oleme noorte ja ettevõtlike inimeste meeskond, keda ühendab kirg värske ja uuendus- liku turunduse vastu. Oleme väsinud korduvatest ja iganenud strateegiatest, mis valdkonda domineerivad, mistõttu otsustasime ühendada oma mitmekülgse turunduse, disaini ja digisuundumuste teadmistepagasi, et tuua lauale uus lähenemine. <br> <br> Pakume turundust, mis on pingevaba, humoorikas ja täis väärtuslikku sisu = spetsialiseerume Gen Z-le ja võtab arvesse teie ettevõtte väärtusi.
+            Asutatud aastal 2024, oleme noorte ja ettevõtlike inimeste meeskond, keda ühendab kirg värske ja uuendusliku turunduse vastu. Oleme väsinud korduvatest ja iganenud strateegiatest, mis valdkonda domineerivad, mistõttu otsustasime ühendada oma mitmekülgse turunduse, disaini ja digisuundumuste teadmistepagasi, et tuua lauale uus lähenemine. <br> <br> Pakume turundust, mis on pingevaba, humoorikas ja täis väärtuslikku sisu = spetsialiseerume Gen Z-le ja võtab arvesse teie ettevõtte väärtusi.
         </p>
     </div>
     <div id="projektid-content" style="display: none;">
@@ -48,16 +53,31 @@
             <a href="https://www.instagram.com/dodontagency?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a><br>
             <a href="https://www.tiktok.com/@dodontagency?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a><br><br>
         </p>
-        <p>
-            <span id="email" onclick="copyToClipboard('email')">dodontagency@gmail.com</span> <br>
-            <span id="phone" onclick="copyToClipboard('phone')">(+372)112233445</span>
-        </p>
+        <div id="kontakt-kontent-copy">
+            <p>
+                <span id="email" onclick="copyToClipboard('email')">dodontagency@gmail.com</span>
+            </p>
+            <p>
+                <span id="phone" onclick="copyToClipboard('phone')">(+372)112233445</span>
+            </p>
+        </div>
+        
     </div>   
 
     <!-- Gradient Bar with running text -->
     <div id="gradient-bar" class="gradient-bar">
-        <p id="running-text">Täisteenust pakkuv turundusagentuur, mille fookus on noorem generatsioon – loome ja viime ellu turundusstrateegiaid, mis on suunatud Gen Z publikule.</p>
+        <div id="running-text">
+            <div class="text">
+                Täisteenust pakkuv <span class="coolvetica">turundusagentuur</span>, mille fookus on noorem generatsioon – loome ja viime ellu turundusstrateegiaid, mis on suunatud Gen Z publikule.
+            </div>
+            <div class="text">
+                Täisteenust pakkuv <span class="coolvetica">turundusagentuur</span>, mille fookus on noorem generatsioon – loome ja viime ellu turundusstrateegiaid, mis on suunatud Gen Z publikule.
+            </div>
+        </div>
     </div>
+    
+    
+</div>
 
     <script src="script.js"></script>
 </body>

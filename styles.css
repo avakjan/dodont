@@ -16,13 +16,15 @@ body {
 
 /* Language Button */
 #language-btn {
-    align-self: end;
+    align-self: flex-end;
     padding: 1vh 1.4vw;
     background-color: #800080;
     color: white;
     border: none;
     font-size: 2em;
     cursor: pointer;
+    width: 3em;
+    box-sizing: border-box;
 }
 
 #language-btn:hover {
@@ -37,15 +39,40 @@ body {
 
 /* Logo */
 .logo {
+    position: relative;
     display: inline-block;
-    max-width: fit-content;
-    max-height: fit-content;
     cursor: pointer;
 }
+
 .logo img {
     display: block;
-    width: 25em;           
-    height: auto; 
+    width: 25em; /* Adjust as needed for your logo size */
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Default image visible */
+.logo img:first-child {
+    opacity: 1;
+}
+
+/* Hover image hidden by default */
+.logo .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25em; /* Ensure this matches the width of the logo */
+    height: auto;
+    opacity: 0;
+}
+
+/* On hover, fade in the hover image and fade out the default image */
+.logo:hover .hover-img {
+    opacity: 1;
+}
+
+.logo:hover img:first-child {
+    opacity: 1;
 }
 
 /* Navigation */
@@ -56,6 +83,7 @@ body {
 }
 
 .nav-button {
+    position: relative;
     background: none;
     border: none;
     padding: 0;
@@ -68,12 +96,41 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
-    transition: transform 0.3s ease; 
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Default image stays visible unless hovered */
+.nav-button img:first-child {
+    opacity: 1;
+    transform: scale(1); /* Default size */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add opacity and scale transition */
+}
+
+/* Hover image is initially hidden */
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8.5em;
+    height: auto;
+    opacity: 0;
+    transform: scale(1); /* Default size */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add opacity and scale transition */
+}
+
+/* Gradually fade the hover image in and scale up on hover */
+.nav-button:hover .hover-img {
+    opacity: 1; /* Hover image fades in */
+    transform: scale(1.05); /* Hover image scales up */
+}
+
+/* Gradually fade out and scale up the original image */
+.nav-button:hover img:first-child {
+    opacity: 0; /* Original image fades out */
+    transform: scale(1.05); /* Original image scales up */
 }
 
 .nav-button img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
 
@@ -81,27 +138,45 @@ body {
     font-size: 2em;
 }
 
+
+
 /* Gradient Bar */
 .gradient-bar {
     width: 100%;
-    background: linear-gradient(to right, #ff007f, #800080);
+    background: linear-gradient(to right, #DD0D7E 5%, #865873 32%, #66726E 63%, #841D7C 95%);
     position: absolute;
     bottom: 0;
-    padding: 10px;
+    padding: 1vh 0;
     color: white;
-    text-align: center;
+    overflow: hidden;
 }
 
 #running-text {
-    display: inline-block;
+    display: flex;
+    animation: marquee var(--animation-duration) linear infinite;
+    font-size: 1.8em;
+    gap: 7vw; /* Ensure this matches the gap you're using */
+}
+
+#running-text .text {
+    flex-shrink: 0;
     white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-    animation: running-text 10s linear infinite;
+    font-family: NEUEHAASTHIN, sans-serif;
 }
-#projektid-content {
-    
+
+.coolvetica {
+    font-family: CoolVetica;
 }
+#meist-content {
+    display: flex;
+    margin-right: 10vw;
+    align-self: end;
+}
+#meist-content p {
+    font-size: 2em;
+    max-width: 42vw;
+}
+
 #projektid-content p {
     font-size: 1.1em;
 }
@@ -117,18 +192,42 @@ body {
     align-self: flex-start;
     margin-left: 16vw;
 }
+#kontakt-content a {
+    color: black;
+    text-decoration: none;
+}
+#kontakt-content a:hover {
+    color: #DD0D7E;
+}
+#kontakt-content p:hover {
+    color: #DD0D7E;
+    cursor: pointer;
+}
+
 @font-face {
     font-family: 'Coolvetica';
     src: url('fonts/COOLVETICA.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-/* Text scroll animation */
-@keyframes running-text {
-    0% {
-        transform: translateX(100%);
+@font-face {
+    font-family: 'CoolveticaCond';
+    src: url('fonts/COOLVETICACONDENSED.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NeueHaasThin';
+    src: url('fonts/NEUEHAASTHIN.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(3.5%);
     }
-    100% {
-        transform: translateX(-100%);
+    to {
+        transform: translateX(calc(-1 * var(--text-width)));
     }
 }
