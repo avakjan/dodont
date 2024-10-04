@@ -167,18 +167,26 @@ body {
 .coolvetica {
     font-family: CoolVetica;
 }
-#meist-content {
-    display: flex;
-    margin-right: 10vw;
-    align-self: end;
+#meist-content { 
+    display: flex; 
+    margin-right: 10vw; 
+    align-self: end; 
 }
-#meist-content p {
-    font-size: 2em;
-    max-width: 42vw;
+#meist-content p { 
+    font-size: calc(1rem + 0.7vw); 
+    width: 42vw; 
+}
+
+#projektid-content img {
+    max-width: 100%;
+    height: auto;
+    padding: 0 10vw;
 }
 
 #projektid-content p {
     font-size: 1.1em;
+    margin: 0 10vw;
+    word-wrap: break-word;
 }
 #kontakt-content {
     font-size: 2em;
@@ -186,11 +194,13 @@ body {
     text-align: left;
     width: 50vw;
     flex-flow: wrap;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
     align-self: flex-start;
     margin-left: 16vw;
+    max-width: 100%;
 }
 #kontakt-content a {
     color: black;
