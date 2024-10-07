@@ -22,15 +22,6 @@ window.onload = function() {
     preloadImages(imageUrls);
 };
 
-function changeLanguage() {
-    var languageBtn = document.getElementById('language-btn');
-    if (languageBtn.innerText === 'Est') {
-        languageBtn.innerText = 'Eng';
-    } else {
-        languageBtn.innerText = 'Est';
-    }
-}
-
 function resetPage() {
     // Hide all sections and reset images to default
     hideAllSections();
@@ -40,9 +31,25 @@ function resetPage() {
     gradientBarElement.style.display = 'block';
     document.body.style.alignContent = 'flex-start';
 
-    // Show all <p> tags when the page is reset
-    let allParagraphs = document.querySelectorAll('.nav-button p');
-    allParagraphs.forEach(p => p.style.visibility = 'visible');
+    // Show all <p> tags and reset images when the page is reset
+    let navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        let normalImg = button.querySelector('img:first-child');
+        let hoverImg = button.querySelector('.hover-img');
+        let paragraph = button.querySelector('p');
+
+        // Reset all images to be visible
+        normalImg.style.display = 'block';
+        hoverImg.style.display = 'block';
+
+        // Reset the visibility of all <p> tags
+        paragraph.style.visibility = 'visible';
+        paragraph.style.display = 'block'; // Ensure text is displayed
+    });
+
+    // Reset nav-container gap to default value
+    const navContainer = document.querySelector('.nav-container');
+    navContainer.style.gap = '8vw'; // Set to your original gap value or default
 
     // Set current section to null
     currentSection = null;
@@ -54,10 +61,12 @@ function hideAllSections() {
     document.getElementById('projektid-content').style.display = 'none';
     document.getElementById('kontakt-content').style.display = 'none';
 
+    // Reset images to default state
     document.getElementById('meist-img').src = './images/meist.png';
     document.getElementById('projektid-img').src = './images/projektid.png';
     document.getElementById('kontakt-img').src = './images/kontakt.png';
 }
+
 
 function showMeist() {
     if (currentSection === 'meist') {
@@ -70,6 +79,7 @@ function showMeist() {
         document.body.style.alignContent = 'flex-start';
         currentSection = 'meist'; // Set current section to "meist"
         showActiveText('meist-btn');
+        hideOtherImagesMobile('meist-btn'); // Hide other images only for mobile devices
     }
 }
 
@@ -83,6 +93,7 @@ function showProjektid() {
         document.getElementById('gradient-bar').style.display = 'none';
         currentSection = 'projektid';
         showActiveText('projektid-btn');
+        hideOtherImagesMobile('projektid-btn'); // Hide other images only for mobile devices
     }
 }
 
@@ -97,6 +108,7 @@ function showKontakt() {
         document.body.style.alignContent = 'space-between';
         currentSection = 'kontakt'; // Set current section to "kontakt"
         showActiveText('kontakt-btn');
+        hideOtherImagesMobile('kontakt-btn'); // Hide other images only for mobile devices
     }
 }
 
@@ -117,6 +129,40 @@ function showActiveText(activeButtonId) {
         }
     });
 }
+
+// Utility function to hide other images only for mobile devices and adjust layout accordingly
+function hideOtherImagesMobile(activeButtonId) {
+    // Check if the screen width is less than or equal to 768px (mobile device)
+    if (window.innerWidth <= 768) {
+        // Get all nav buttons
+        let navButtons = document.querySelectorAll('.nav-button');
+
+        navButtons.forEach(button => {
+            let normalImg = button.querySelector('img:first-child');
+            let hoverImg = button.querySelector('.hover-img');
+            let paragraph = button.querySelector('p');
+
+            if (button.id === activeButtonId) {
+                // Keep the selected button's images and text visible
+                normalImg.style.display = 'block';
+                hoverImg.style.display = 'block';
+                paragraph.style.display = 'block'; // Ensure text is displayed
+            } else {
+                // Hide the images of non-active buttons and ensure they take up no space
+                normalImg.style.display = 'none';
+                hoverImg.style.display = 'none';
+                paragraph.style.display = 'none'; // Ensure text of non-active buttons is hidden
+            }
+        });
+
+        // Adjust alignment of nav-container to center the selected button
+        const navContainer = document.querySelector('.nav-container');
+        navContainer.style.justifyContent = 'center';
+        navContainer.style.gap = '0';
+    }
+}
+
+
 
 function copyToClipboard(elementId) {
     var text = document.getElementById(elementId).innerText;
@@ -139,7 +185,7 @@ document.fonts.ready.then(() => {
 const translations = {
     est: {
         languageButton: 'Est',
-        'meist-content-text': `Asutatud aastal 2024, oleme noorte ja ettevõtlike inimeste meeskond, keda ühendab kirg värske ja uuendusliku turunduse vastu. Oleme väsinud korduvatest ja iganenud strateegiatest, mis valdkonda domineerivad, mistõttu otsustasime ühendada oma mitmekülgse turunduse, disaini ja digisuundumuste teadmistepagasi, et tuua lauale uus lähenemine. <br> <br> Pakume turundust, mis on pingevaba, humoorikas ja täis väärtuslikku sisu = spetsialiseerume Gen Z-le ja võtab arvesse teie ettevõtte väärtusi.`,
+        'meist-content-text': `Asutatud 2024. aastal, oleme noorte ja ettevõtlike inimeste meeskond, kes on väsinud nägemast samu korduvaid turundusstrateegiaid. Seetõttu oleme ühendanud oma teadmised ja loovuse, et pakkuda teie ettevõttele ainulaadset sisu, mis aitab jõuda uute sihtrühmadeni ja avada uusi turuvõimalusi. <br> <br> Pakume turundust, mis on vaba-loomuline, humoorikas, truuks jäädes teie brändi kuvandile ja täis väärtuslikku sisu: spetsialiseerudes Gen Z-le ja võttes arvesse teie ettevõtte väärtusi. <br> <br> Kohandame oma strateegiad vastavalt teie konkreetsetele eesmärkidele ja visioonile, tagades tulemusi toovad lahendused.`,
         'projektid-content-text': 'Praegu uuendamisel...',
         'running-text': `Täisteenust pakkuv <span class="coolvetica">turundusagentuur</span>, mille fookus on noorem generatsioon – loome ja viime ellu turundusstrateegiaid, mis on suunatud Gen Z publikule.`,
         'nav-meist': 'Meist',
@@ -148,8 +194,7 @@ const translations = {
     },
     eng: {
         languageButton: 'Eng',
-        'meist-content-text': `Founded in 2024, we are three young and entrepreneurial individuals who are tired of seeing the same repetitive marketing strategies. That’s why we decided to combine our knowledge and creativity to offer your business unique content that helps reach new target audiences and unlock new market opportunities.
-        <br><br>We offer marketing that is casual, humorous and filled with valuable content = specializes on Gen Z and takes your companies values into account.`,
+        'meist-content-text': `Established in 2024, we are a team of young and entrepreneurial individuals who are tired of seeing the same repetitive marketing strategies. That’s why we decided to combine our knowledge and creativity to offer your business unique content that helps reach new target audiences and unlock new market opportunities. <br> <br> We offer marketing that is casual, humorous, true to your brand image and filled with valuable content: specializes on Gen Z and takes your companies values into account. <br> <br> We customize our strategies to align with your specific goals and vision, ensuring tailored solutions that drive results.`,
         'projektid-content-text': 'Currently updating...',
         'running-text': `Full–service <span class="coolvetica">marketing agency</span>, focused on the younger generation — creating and executing marketing stratagies targeted at Gen Z audiences.`,
         'nav-meist': 'About',
@@ -162,11 +207,13 @@ const translations = {
 let currentLanguage = 'est';
 
 function changeLanguage() {
+    var languageBtn = document.getElementById('language-btn');
+
     // Toggle the language
     currentLanguage = currentLanguage === 'est' ? 'eng' : 'est';
 
     // Update the language button text
-    document.getElementById('language-btn').innerText = translations[currentLanguage].languageButton;
+    languageBtn.innerText = translations[currentLanguage].languageButton;
 
     // Update 'meist-content' text
     document.querySelector('#meist-content p').innerHTML = translations[currentLanguage]['meist-content-text'];
@@ -185,5 +232,11 @@ function changeLanguage() {
     document.querySelector('#meist-btn p').innerText = translations[currentLanguage]['nav-meist'];
     document.querySelector('#projektid-btn p').innerText = translations[currentLanguage]['nav-projektid'];
     document.querySelector('#kontakt-btn p').innerText = translations[currentLanguage]['nav-kontakt'];
+    
+    if (languageBtn.innerText === 'Est') {
+        languageBtn.style.backgroundColor = '#66726E';
+    } else {
+        languageBtn.style.backgroundColor = '#DD0D7E';
+    }
 }
 

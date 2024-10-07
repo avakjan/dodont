@@ -18,17 +18,14 @@ body {
 #language-btn {
     align-self: flex-end;
     padding: 1vh 1.4vw;
-    background-color: #800080;
+    background-color: #66726E;
     color: white;
     border: none;
     font-size: 2em;
     cursor: pointer;
     width: 3em;
     box-sizing: border-box;
-}
-
-#language-btn:hover {
-    background-color: #660066;
+    font-family: neuehaasxthin;
 }
 
 .main {
@@ -46,7 +43,7 @@ body {
 
 .logo img {
     display: block;
-    width: 25em; /* Adjust as needed for your logo size */
+    width: 20vw;
     height: auto;
     transition: opacity 0.3s ease-in-out;
 }
@@ -61,7 +58,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 25em; /* Ensure this matches the width of the logo */
+    width: 20vw; /* Ensure this matches the width of the logo */
     height: auto;
     opacity: 0;
 }
@@ -80,6 +77,7 @@ body {
     display: flex;
     gap: 8vw;
     align-items: center;
+    flex-direction: row;
 }
 
 .nav-button {
@@ -92,7 +90,7 @@ body {
 }
 
 .nav-button img {
-    width: 8.5em;
+    width: 7.5vw;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -111,7 +109,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 8.5em;
+    width: 7.5vw;
     height: auto;
     opacity: 0;
     transform: scale(1); /* Default size */
@@ -175,6 +173,7 @@ body {
 #meist-content p { 
     font-size: calc(1rem + 0.7vw); 
     width: 42vw; 
+    font-family: neuehaasroman;
 }
 
 #projektid-content img {
@@ -184,9 +183,10 @@ body {
 }
 
 #projektid-content p {
-    font-size: 1.1em;
+    font-size: 2em;
     margin: 0 10vw;
     word-wrap: break-word;
+    font-family: neuehaaslight;
 }
 #kontakt-content {
     font-size: 2em;
@@ -232,12 +232,86 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-
+@font-face {
+    font-family: NeueHaasXXThin;
+    src: url('fonts/NeueHaasDisplayXXThin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: NeueHaasXThin;
+    src: url('fonts/NeueHaasDisplayXThin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: NeueHaasLight;
+    src: url('fonts/NeueHaasDisplayLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: NeueHaasRoman;
+    src: url('fonts/NeueHaasDisplayRoman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 @keyframes marquee {
     from {
         transform: translateX(3.5%);
     }
     to {
         transform: translateX(calc(-1 * var(--text-width)));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        gap: 5vw;
+        overflow: auto;
+    }
+    .main {
+        flex-direction: column;
+        align-items: center;
+        gap: 20vw;
+    }
+    .nav-container {
+        flex-direction: column; /* Switch to column layout when screen width is less than 768px */
+        gap: 5vh; /* Adjust the gap for stacked items */
+        align-items: center;
+    }
+    .nav-button p {
+        font-size: 1.6em;
+        margin-top: -7%;
+    }    
+    .nav-button img {
+        width: 25vw; /* Adjust image size for smaller screens */
+    }
+
+    .nav-button .hover-img {
+        width: 25vw; /* Ensure hover image also adjusts size */
+    }
+    .logo img {
+        width: 80vw;
+    }
+    .logo .hover-img {
+        width: 80vw;
+    }
+    .gradient-bar {
+        display: none !important;
+    }
+    #language-btn {
+        font-size: 1.5em;
+        width: 3.5em;
+        padding: 1.3vh 0vw;
+    }
+    #meist-content {
+        align-self: center;
+        margin-right: 0;
+        margin-top: 5vh;
+    }
+    #meist-content p {
+        font-size: calc(1rem + 1.55vw);
+        width: 85vw;
     }
 }
