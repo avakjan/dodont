@@ -269,6 +269,7 @@ body {
     body {
         gap: 5vw;
         overflow: auto;
+        min-height: 80vh;
     }
     .main {
         flex-direction: column;
