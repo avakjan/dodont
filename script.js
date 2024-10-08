@@ -49,7 +49,7 @@ function resetPage() {
 
     // Reset nav-container gap to default value
     const navContainer = document.querySelector('.nav-container');
-    navContainer.style.gap = '8vw'; // Set to your original gap value or default
+    navContainer.style.gap = '5vh'; // Set to your original gap value or default
 
     // Set current section to null
     currentSection = null;
