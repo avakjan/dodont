@@ -328,22 +328,17 @@ body {
         display: none;
     }
     #projektid-content p {
-        margin: 17vh 10vw 0;
+        margin: 10vh 10vw 0;
     }
     #kontakt-content {
-        gap: 10vh;
+        gap: 5vh;
         font-size: 1.5em;
         color: black;
         text-align: center;
         display: flex;
         flex-direction: column;
-        margin: 8.5vh 0 0;
+        margin: 5vh 0 0;
         align-self: center;
         flex-flow: column;
-    }
-    .nav-button.hidden {
-        opacity: 0;
-        transform: scaleY(0);
-        pointer-events: none; /* Prevent interaction when hidden */
     }
 }
