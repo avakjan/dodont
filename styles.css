@@ -332,13 +332,13 @@ body {
         margin: 10vh 10vw 0;
     }
     #kontakt-content {
-        gap: 5vh;
+        gap: 0vh;
         font-size: 1.5em;
         color: black;
         text-align: center;
         display: flex;
         flex-direction: column;
-        margin: 5vh 0 0;
+        margin: 3vh 0 0;
         align-self: center;
         flex-flow: column;
     }
