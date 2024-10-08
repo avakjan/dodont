@@ -302,10 +302,10 @@ body {
         width: 25vw; /* Ensure hover image also adjusts size */
     }
     .logo img {
-        width: 77vw;
+        width: 70vw;
     }
     .logo .hover-img {
-        width: 77vw;
+        width: 70vw;
     }
     .gradient-bar {
         display: none !important;
