@@ -48,8 +48,12 @@ function resetPage() {
     });
 
     // Reset nav-container gap to default value
-    const navContainer = document.querySelector('.nav-container');
-    navContainer.style.gap = '5vh'; // Set to your original gap value or default
+    if (window.innerWidth <= 768) {
+        const navContainer = document.querySelector('.nav-container');
+        navContainer.style.gap = '5vh';
+    } else {
+        navContainer.style.gap = '8vw';
+    }
 
     // Set current section to null
     currentSection = null;
@@ -155,10 +159,13 @@ function hideOtherImagesMobile(activeButtonId) {
             }
         });
 
-        // Adjust alignment of nav-container to center the selected button
-        const navContainer = document.querySelector('.nav-container');
-        navContainer.style.justifyContent = 'center';
-        navContainer.style.gap = '0';
+        if (window.innerWidth <= 768) {
+            // Adjust alignment of nav-container to center the selected button
+            const navContainer = document.querySelector('.nav-container');
+            navContainer.style.justifyContent = 'center';
+            navContainer.style.gap = '0';
+        }
+        
     }
 }
 
