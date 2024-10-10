@@ -109,33 +109,23 @@ body {
 /* Default image visible by default */
 .nav-button .default-img {
     display: block;
+    opacity: 1;
 }
 
 /* Hover image hidden by default */
 .nav-button .hover-img {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
+    opacity: 0;
 }
 
 
 /* Show hover image when nav-button is active */
 .nav-button.active .default-img {
     display: none;
+    opacity: 0;
 }
 .nav-button.active .hover-img {
     display: block;
-}
-.nav-button .default-img,
-.nav-button .hover-img {
-    transition: opacity 0.3s ease-in-out;
-}
-.nav-button.active .default-img {
-    opacity: 0;
-}
-
-.nav-button.active .hover-img {
     opacity: 1;
 }
 
@@ -182,6 +172,7 @@ body {
     width: 42vw; 
     font-family: neuehaasroman;
 }
+
 
 #projektid-content img {
     max-width: 100%;
