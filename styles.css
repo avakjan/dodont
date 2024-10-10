@@ -78,6 +78,7 @@ body {
     gap: 8vw;
     align-items: center;
     flex-direction: row;
+    transition: gap 0.5s ease-in-out; 
 }
 
 .nav-button {
@@ -87,8 +88,16 @@ body {
     padding: 0;
     text-align: center;
     display: inline-block;
+    max-height: 150px;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out, margin 0.5s ease-in-out;
+
 }
-/*TODO: gradient is in different place after screen resize*/
+.nav-button.hidden {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    pointer-events: none; /* Prevent interaction when hidden */
+}
 .nav-button img {
     width: 7.5vw;
     height: auto;
@@ -97,43 +106,41 @@ body {
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-/* Default image stays visible unless hovered */
-.nav-button img:first-child {
-    opacity: 1;
-    transform: scale(1); /* Default size */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add opacity and scale transition */
+/* Default image visible by default */
+.nav-button .default-img {
+    display: block;
 }
 
-/* Hover image is initially hidden */
-.hover-img {
+/* Hover image hidden by default */
+.nav-button .hover-img {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
-    width: 7.5vw;
-    height: auto;
+}
+
+
+/* Show hover image when nav-button is active */
+.nav-button.active .default-img {
+    display: none;
+}
+.nav-button.active .hover-img {
+    display: block;
+}
+.nav-button .default-img,
+.nav-button .hover-img {
+    transition: opacity 0.3s ease-in-out;
+}
+.nav-button.active .default-img {
     opacity: 0;
-    transform: scale(1); /* Default size */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add opacity and scale transition */
 }
 
-/* Gradually fade the hover image in and scale up on hover */
-.nav-button:hover .hover-img {
-    opacity: 1; /* Hover image fades in */
-    transform: scale(1.05); /* Hover image scales up */
-}
-
-/* Gradually fade out and scale up the original image */
-.nav-button:hover img:first-child {
-    opacity: 0; /* Original image fades out */
-    transform: scale(1.05); /* Original image scales up */
-}
-
-.nav-button img:hover {
-    cursor: pointer;
+.nav-button.active .hover-img {
+    opacity: 1;
 }
 
 .nav-button p {
-    font-size: 2em;
+    font-size: 1.6vw;
 }
 
 
@@ -340,6 +347,6 @@ body {
         flex-direction: column;
         margin: 8.5vh 0 2vh;
         align-self: center;
-        flex-flow: column;
+        flex-flow: column-reverse;
     }
 }

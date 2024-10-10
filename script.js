@@ -1,13 +1,14 @@
 let currentSection = null;
 const imageUrls = [
+    './images/Group 29.png',
+    './images/kontakt.png',
+    './images/kontaktGrad.png',
     './images/Logo.png',
+    './images/LogoGrad.png',
     './images/meist.png',
     './images/meistGrad.png',
     './images/projektid.png',
     './images/projektidGrad.png',
-    './images/kontakt.png',
-    './images/kontaktGrad.png',
-    './images/LogoGrad.png',
     // Add any other images you want to preload
 ];
 
@@ -23,41 +24,34 @@ window.onload = function() {
 };
 
 function resetPage() {
-    // Hide all sections and reset images to default
     hideAllSections();
 
-    // Reset the gradient bar and align-content
     var gradientBarElement = document.getElementById('gradient-bar');
     gradientBarElement.style.display = 'block';
     document.body.style.alignContent = 'flex-start';
 
-    // Show all <p> tags and reset images when the page is reset
     let navButtons = document.querySelectorAll('.nav-button');
     navButtons.forEach(button => {
-        let normalImg = button.querySelector('img:first-child');
-        let hoverImg = button.querySelector('.hover-img');
+        button.classList.remove('hidden', 'active');
+
         let paragraph = button.querySelector('p');
-
-        // Reset all images to be visible
-        normalImg.style.display = 'block';
-        hoverImg.style.display = 'block';
-
-        // Reset the visibility of all <p> tags
         paragraph.style.visibility = 'visible';
-        paragraph.style.display = 'block'; // Ensure text is displayed
+        paragraph.style.display = '';
     });
 
-    // Reset nav-container gap to default value
+    const navContainer = document.querySelector('.nav-container');
+    navContainer.style.justifyContent = '';
+
     if (window.innerWidth <= 768) {
-        const navContainer = document.querySelector('.nav-container');
         navContainer.style.gap = '5vh';
     } else {
         navContainer.style.gap = '8vw';
     }
 
-    // Set current section to null
+
     currentSection = null;
 }
+
 
 function hideAllSections() {
     // Hide all content sections
@@ -65,11 +59,13 @@ function hideAllSections() {
     document.getElementById('projektid-content').style.display = 'none';
     document.getElementById('kontakt-content').style.display = 'none';
 
-    // Reset images to default state
-    document.getElementById('meist-img').src = './images/meist.png';
-    document.getElementById('projektid-img').src = './images/projektid.png';
-    document.getElementById('kontakt-img').src = './images/kontakt.png';
+    // Remove 'active' class from all nav-buttons
+    let navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        button.classList.remove('active');
+    });
 }
+
 
 
 function showMeist() {
@@ -78,7 +74,8 @@ function showMeist() {
     } else {
         hideAllSections();
         document.getElementById('meist-content').style.display = 'block';
-        document.getElementById('meist-img').src = './images/meistGrad.png';
+        // Add 'active' class instead of changing 'src'
+        document.getElementById('meist-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         document.body.style.alignContent = 'flex-start';
         currentSection = 'meist'; // Set current section to "meist"
@@ -87,13 +84,14 @@ function showMeist() {
     }
 }
 
+
 function showProjektid() {
     if (currentSection === 'projektid') {
         resetPage();
     } else {
         hideAllSections();
         document.getElementById('projektid-content').style.display = 'block';
-        document.getElementById('projektid-img').src = './images/projektidGrad.png';
+        document.getElementById('projektid-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         currentSection = 'projektid';
         showActiveText('projektid-btn');
@@ -107,7 +105,7 @@ function showKontakt() {
     } else {
         hideAllSections();
         document.getElementById('kontakt-content').style.display = 'flex';
-        document.getElementById('kontakt-img').src = './images/kontaktGrad.png';
+        document.getElementById('kontakt-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         document.body.style.alignContent = 'space-between';
         currentSection = 'kontakt'; // Set current section to "kontakt"
@@ -115,6 +113,7 @@ function showKontakt() {
         hideOtherImagesMobile('kontakt-btn'); // Hide other images only for mobile devices
     }
 }
+
 
 // Utility function to show only the <p> of the active button and hide the others
 function showActiveText(activeButtonId) {
@@ -136,38 +135,28 @@ function showActiveText(activeButtonId) {
 
 // Utility function to hide other images only for mobile devices and adjust layout accordingly
 function hideOtherImagesMobile(activeButtonId) {
-    // Check if the screen width is less than or equal to 768px (mobile device)
     if (window.innerWidth <= 768) {
-        // Get all nav buttons
         let navButtons = document.querySelectorAll('.nav-button');
 
         navButtons.forEach(button => {
-            let normalImg = button.querySelector('img:first-child');
-            let hoverImg = button.querySelector('.hover-img');
             let paragraph = button.querySelector('p');
 
             if (button.id === activeButtonId) {
-                // Keep the selected button's images and text visible
-                normalImg.style.display = 'block';
-                hoverImg.style.display = 'block';
-                paragraph.style.display = 'block'; // Ensure text is displayed
+                button.classList.remove('hidden');
+                paragraph.style.visibility = 'visible'; // Ensure the <p> is visible
             } else {
-                // Hide the images of non-active buttons and ensure they take up no space
-                normalImg.style.display = 'none';
-                hoverImg.style.display = 'none';
-                paragraph.style.display = 'none'; // Ensure text of non-active buttons is hidden
+                button.classList.add('hidden');
+                paragraph.style.visibility = 'hidden'; // Hide the <p> of non-active buttons
             }
         });
 
-        if (window.innerWidth <= 768) {
-            // Adjust alignment of nav-container to center the selected button
-            const navContainer = document.querySelector('.nav-container');
-            navContainer.style.justifyContent = 'center';
-            navContainer.style.gap = '0';
-        }
-        
+        // Adjust alignment of nav-container to center the selected button
+        const navContainer = document.querySelector('.nav-container');
+        navContainer.style.justifyContent = 'center';
+        navContainer.style.gap = '0';
     }
 }
+
 
 
 
