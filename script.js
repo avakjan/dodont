@@ -48,7 +48,6 @@ function resetPage() {
         navContainer.style.gap = '8vw';
     }
 
-
     currentSection = null;
 }
 
@@ -81,6 +80,7 @@ function showMeist() {
         currentSection = 'meist'; // Set current section to "meist"
         showActiveText('meist-btn');
         hideOtherImagesMobile('meist-btn'); // Hide other images only for mobile devices
+        scrollToSectionOnMobile('meist-content'); 
     }
 }
 
@@ -96,6 +96,7 @@ function showProjektid() {
         currentSection = 'projektid';
         showActiveText('projektid-btn');
         hideOtherImagesMobile('projektid-btn'); // Hide other images only for mobile devices
+        scrollToSectionOnMobile('projektid-content');
     }
 }
 
@@ -111,6 +112,7 @@ function showKontakt() {
         currentSection = 'kontakt'; // Set current section to "kontakt"
         showActiveText('kontakt-btn');
         hideOtherImagesMobile('kontakt-btn'); // Hide other images only for mobile devices
+        scrollToSectionOnMobile('kontakt-content'); 
     }
 }
 
@@ -235,4 +237,46 @@ function changeLanguage() {
         languageBtn.style.backgroundColor = '#DD0D7E';
     }
 }
+function scrollToSectionOnMobile(sectionId) {
+    if (window.innerWidth <= 768) { // Adjust the breakpoint as needed
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+            const offset = 500; // Adjust if you need to offset the scroll position
+            const targetPosition = sectionPosition - offset;
+            const duration = 1000; // Duration in milliseconds
+
+            setTimeout(function() {
+                smoothScrollTo(targetPosition, duration);
+            }, 100);        
+        }
+    }
+}
+function smoothScrollTo(targetPosition, duration) {
+    const startPosition = window.pageYOffset || document.documentElement.scrollTop;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+            window.requestAnimationFrame(animation);
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    window.requestAnimationFrame(animation);
+}
+
 
