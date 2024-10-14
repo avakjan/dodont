@@ -297,6 +297,7 @@ body {
         margin-top: 0;
     }    
     .nav-button img {
+        top: 0;
         width: 25vw; /* Adjust image size for smaller screens */
     }
 

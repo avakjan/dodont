@@ -34,22 +34,23 @@ function resetPage() {
     navButtons.forEach(button => {
         button.classList.remove('hidden', 'active');
 
+        // Make sure hidden buttons are made visible again
+        button.style.opacity = '1';
+        button.style.maxHeight = '20vh'; // Restore original max-height
+        button.style.display = 'block'; // Ensure the buttons are displayed
+
         let paragraph = button.querySelector('p');
         paragraph.style.visibility = 'visible';
-        paragraph.style.display = '';
+        paragraph.style.display = ''; // Restore paragraph display if needed
     });
 
     const navContainer = document.querySelector('.nav-container');
     navContainer.style.justifyContent = '';
-
-    if (window.innerWidth <= 768) {
-        navContainer.style.gap = '5vh';
-    } else {
-        navContainer.style.gap = '8vw';
-    }
+    navContainer.style.gap = window.innerWidth <= 768 ? '5vh' : '8vw';
 
     currentSection = null;
 }
+
 
 
 function hideAllSections() {
@@ -135,7 +136,7 @@ function showActiveText(activeButtonId) {
     });
 }
 
-// Utility function to hide other images only for mobile devices and adjust layout accordingly
+// Example: Update functions to handle consistent image classes
 function hideOtherImagesMobile(activeButtonId) {
     if (window.innerWidth <= 768) {
         let navButtons = document.querySelectorAll('.nav-button');
@@ -144,20 +145,38 @@ function hideOtherImagesMobile(activeButtonId) {
             let paragraph = button.querySelector('p');
 
             if (button.id === activeButtonId) {
-                button.classList.remove('hidden');
-                paragraph.style.visibility = 'visible'; // Ensure the <p> is visible
+                // Show the active button smoothly
+                button.style.transition = 'opacity 0.5s ease-in-out, max-height 0.5s ease-in-out';
+                button.style.opacity = '1';
+                button.style.maxHeight = '20vh'; // Set max height to original to ensure visibility
+                button.style.display = 'block'; // Ensure it's displayed
+                paragraph.style.visibility = 'visible';
             } else {
-                button.classList.add('hidden');
-                paragraph.style.visibility = 'hidden'; // Hide the <p> of non-active buttons
+                // Smoothly fade out and hide non-selected buttons
+                button.style.transition = 'opacity 0.5s ease-in-out, max-height 0.5s ease-in-out';
+                button.style.opacity = '0'; // Fade out
+                button.style.maxHeight = '0'; // Collapse height
+
+                // Use a timeout to set display to 'none' after the opacity transition completes
+                setTimeout(() => {
+                    if (window.innerWidth <= 768) { // Make sure it's still in mobile view
+                        button.style.display = 'none'; // Remove from the layout
+                    }
+                }, 500); // Match the duration of the opacity transition (0.5s)
+
+                paragraph.style.visibility = 'hidden'; // Hide the paragraph text
             }
         });
 
-        // Adjust alignment of nav-container to center the selected button
+        // Adjust alignment of nav-container to center the selected button with smooth transition
         const navContainer = document.querySelector('.nav-container');
+        navContainer.style.transition = 'gap 0.5s ease-in-out, justify-content 0.5s ease-in-out';
         navContainer.style.justifyContent = 'center';
         navContainer.style.gap = '0';
     }
 }
+
+
 
 
 
