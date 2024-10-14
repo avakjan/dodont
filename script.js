@@ -24,9 +24,27 @@ window.onload = function() {
 };
 
 function resetPage() {
+    // Capture the scroll position before any changes
+    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    console.log('Current scroll position:', currentScrollPosition);
+
+    if (window.innerWidth <= 768) {
+        // Screen width is less than or equal to 768px
+        // Start the scroll animation before DOM updates
+        scrollToTop(300, currentScrollPosition, () => {
+            // Perform DOM updates after scrolling completes
+            performDOMUpdates();
+        });
+    } else {
+        // Screen width is greater than 768px
+        // Perform DOM updates immediately without scrolling
+        performDOMUpdates();
+    }
+}
+function performDOMUpdates() {
     hideAllSections();
 
-    var gradientBarElement = document.getElementById('gradient-bar');
+    const gradientBarElement = document.getElementById('gradient-bar');
     gradientBarElement.style.display = 'block';
     document.body.style.alignContent = 'flex-start';
 
@@ -50,6 +68,10 @@ function resetPage() {
 
     currentSection = null;
 }
+
+
+
+
 
 
 
@@ -263,7 +285,7 @@ function scrollToSectionOnMobile(sectionId) {
             const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
             const offset = 500; // Adjust if you need to offset the scroll position
             const targetPosition = sectionPosition - offset;
-            const duration = 1000; // Duration in milliseconds
+            const duration = 500; // Duration in milliseconds
 
             setTimeout(function() {
                 smoothScrollTo(targetPosition, duration);
@@ -297,5 +319,35 @@ function smoothScrollTo(targetPosition, duration) {
 
     window.requestAnimationFrame(animation);
 }
+function scrollToTop(duration, startPosition, callback) {
+    const targetPosition = 0; // We want to scroll to the top
+    const distance = targetPosition - startPosition;
+    let startTime = null;
 
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
 
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+            window.requestAnimationFrame(animation);
+        } else {
+            // Ensure we end up exactly at the target position
+            window.scrollTo(0, targetPosition);
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    window.requestAnimationFrame(animation);
+}

@@ -86,6 +86,7 @@ body {
     padding: 0;
     text-align: center;
     display: inline-block;
+    max-height: 20vh;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, max-height 0.5s ease-in-out, margin 0.5s ease-in-out;
 }
 .nav-button.hidden {
