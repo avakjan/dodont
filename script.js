@@ -31,7 +31,7 @@ function resetPage() {
     if (window.innerWidth <= 768) {
         // Screen width is less than or equal to 768px
         // Start the scroll animation before DOM updates
-        scrollToTop(300, currentScrollPosition, () => {
+        scrollToTop(500, currentScrollPosition, () => {
             // Perform DOM updates after scrolling completes
             performDOMUpdates();
         });
