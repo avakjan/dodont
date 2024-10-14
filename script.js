@@ -31,7 +31,7 @@ function resetPage() {
     if (window.innerWidth <= 768) {
         // Screen width is less than or equal to 768px
         // Start the scroll animation before DOM updates
-        scrollToTop(500, currentScrollPosition, () => {
+        scrollToTop(250, currentScrollPosition, () => {
             // Perform DOM updates after scrolling completes
             performDOMUpdates();
         });
@@ -285,7 +285,7 @@ function scrollToSectionOnMobile(sectionId) {
             const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
             const offset = 500; // Adjust if you need to offset the scroll position
             const targetPosition = sectionPosition - offset;
-            const duration = 500; // Duration in milliseconds
+            const duration = 400; // Duration in milliseconds
 
             setTimeout(function() {
                 smoothScrollTo(targetPosition, duration);
