@@ -9,7 +9,7 @@ const imageUrls = [
     './images/meistGrad.png',
     './images/projektid.png',
     './images/projektidGrad.png',
-    // Add any other images you want to preload
+    
 ];
 
 function preloadImages(urls) {
@@ -24,89 +24,85 @@ window.onload = function() {
 };
 
 function resetPage() {
-    // Capture the scroll position before any changes
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     console.log('Current scroll position:', currentScrollPosition);
 
     if (window.innerWidth <= 768) {
-        // Screen width is less than or equal to 768px
-        // Start the scroll animation before DOM updates
-        scrollToTop(250, currentScrollPosition, () => {
-            // Perform DOM updates after scrolling completes
-            performDOMUpdates();
-        });
+        // Start the scroll animation
+        scrollToTop(500, currentScrollPosition);
+
+        // Perform DOM updates immediately
+        performDOMUpdates();
     } else {
-        // Screen width is greater than 768px
         // Perform DOM updates immediately without scrolling
         performDOMUpdates();
     }
 }
+
+
 function performDOMUpdates() {
-    hideAllSections();
 
     const gradientBarElement = document.getElementById('gradient-bar');
     gradientBarElement.style.display = 'block';
     document.body.style.alignContent = 'flex-start';
 
-    let navButtons = document.querySelectorAll('.nav-button');
+    const navButtons = document.querySelectorAll('.nav-button');
+
     navButtons.forEach(button => {
+
         button.classList.remove('hidden', 'active');
+        button.style.display = 'block';
 
-        // Make sure hidden buttons are made visible again
+        const paragraph = button.querySelector('p');
+
+        void button.offsetHeight;
+
+        button.style.transition = 'opacity 0.5s ease-in-out, max-height 0.5s ease-in-out';
         button.style.opacity = '1';
-        button.style.maxHeight = '20vh'; // Restore original max-height
-        button.style.display = 'block'; // Ensure the buttons are displayed
+        button.style.maxHeight = '20vh'; 
 
-        let paragraph = button.querySelector('p');
         paragraph.style.visibility = 'visible';
-        paragraph.style.display = ''; // Restore paragraph display if needed
     });
 
     const navContainer = document.querySelector('.nav-container');
-    navContainer.style.justifyContent = '';
+    navContainer.style.transition = 'gap 0.5s ease-in-out, justify-content 0.5s ease-in-out';
+    navContainer.style.justifyContent = ''; 
     navContainer.style.gap = window.innerWidth <= 768 ? '5vh' : '8vw';
 
     currentSection = null;
+
+    setTimeout(() => {
+        hideAllSections();
+    }, 600);
 }
 
-
-
-
-
-
-
 function hideAllSections() {
-    // Hide all content sections
+    
     document.getElementById('meist-content').style.display = 'none';
     document.getElementById('projektid-content').style.display = 'none';
     document.getElementById('kontakt-content').style.display = 'none';
 
-    // Remove 'active' class from all nav-buttons
     let navButtons = document.querySelectorAll('.nav-button');
     navButtons.forEach(button => {
         button.classList.remove('active');
     });
 }
 
-
-
 function showMeist() {
     if (currentSection === 'meist') {
-        resetPage(); // If the same section is clicked, reset the page
+        resetPage(); 
     } else {
         hideAllSections();
         document.getElementById('meist-content').style.display = 'block';
-        // Add 'active' class instead of changing 'src'
         document.getElementById('meist-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         document.body.style.alignContent = 'flex-start';
-        currentSection = 'meist'; // Set current section to "meist"
+        currentSection = 'meist'; 
         showActiveText('meist-btn');
-        hideOtherImagesMobile('meist-btn'); // Hide other images only for mobile devices
+        hideOtherImagesMobile('meist-btn'); 
         scrollToSectionOnMobile('meist-content'); 
     }
 }
-
 
 function showProjektid() {
     if (currentSection === 'projektid') {
@@ -118,47 +114,44 @@ function showProjektid() {
         document.getElementById('gradient-bar').style.display = 'none';
         currentSection = 'projektid';
         showActiveText('projektid-btn');
-        hideOtherImagesMobile('projektid-btn'); // Hide other images only for mobile devices
+        hideOtherImagesMobile('projektid-btn'); 
         scrollToSectionOnMobile('projektid-content');
     }
 }
 
 function showKontakt() {
     if (currentSection === 'kontakt') {
-        resetPage(); // If the same section is clicked, reset the page
+        resetPage(); 
     } else {
         hideAllSections();
         document.getElementById('kontakt-content').style.display = 'flex';
         document.getElementById('kontakt-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         document.body.style.alignContent = 'space-between';
-        currentSection = 'kontakt'; // Set current section to "kontakt"
+        currentSection = 'kontakt'; 
         showActiveText('kontakt-btn');
-        hideOtherImagesMobile('kontakt-btn'); // Hide other images only for mobile devices
+        hideOtherImagesMobile('kontakt-btn'); 
         scrollToSectionOnMobile('kontakt-content'); 
     }
 }
 
-
-// Utility function to show only the <p> of the active button and hide the others
 function showActiveText(activeButtonId) {
-    // Get all nav buttons
+    
     let navButtons = document.querySelectorAll('.nav-button');
 
     navButtons.forEach(button => {
         let paragraph = button.querySelector('p');
 
         if (button.id === activeButtonId) {
-            // Show the <p> tag of the active button
+            
             paragraph.style.visibility = 'visible';
         } else {
-            // Hide the <p> tags of non-active buttons
+            
             paragraph.style.visibility = 'hidden';
         }
     });
 }
 
-// Example: Update functions to handle consistent image classes
 function hideOtherImagesMobile(activeButtonId) {
     if (window.innerWidth <= 768) {
         let navButtons = document.querySelectorAll('.nav-button');
@@ -167,41 +160,35 @@ function hideOtherImagesMobile(activeButtonId) {
             let paragraph = button.querySelector('p');
 
             if (button.id === activeButtonId) {
-                // Show the active button smoothly
+                
                 button.style.transition = 'opacity 0.5s ease-in-out, max-height 0.5s ease-in-out';
                 button.style.opacity = '1';
-                button.style.maxHeight = '20vh'; // Set max height to original to ensure visibility
-                button.style.display = 'block'; // Ensure it's displayed
+                button.style.maxHeight = '20vh'; 
+                button.style.display = 'block'; 
                 paragraph.style.visibility = 'visible';
             } else {
-                // Smoothly fade out and hide non-selected buttons
+                
                 button.style.transition = 'opacity 0.5s ease-in-out, max-height 0.5s ease-in-out';
-                button.style.opacity = '0'; // Fade out
-                button.style.maxHeight = '0'; // Collapse height
+                button.style.opacity = '0'; 
+                button.style.maxHeight = '0'; 
 
-                // Use a timeout to set display to 'none' after the opacity transition completes
+                
                 setTimeout(() => {
-                    if (window.innerWidth <= 768) { // Make sure it's still in mobile view
-                        button.style.display = 'none'; // Remove from the layout
+                    if (window.innerWidth <= 768) { 
+                        button.style.display = 'none'; 
                     }
-                }, 500); // Match the duration of the opacity transition (0.5s)
+                }, 500); 
 
-                paragraph.style.visibility = 'hidden'; // Hide the paragraph text
+                paragraph.style.visibility = 'hidden'; 
             }
         });
 
-        // Adjust alignment of nav-container to center the selected button with smooth transition
         const navContainer = document.querySelector('.nav-container');
         navContainer.style.transition = 'gap 0.5s ease-in-out, justify-content 0.5s ease-in-out';
         navContainer.style.justifyContent = 'center';
         navContainer.style.gap = '0';
     }
 }
-
-
-
-
-
 
 function copyToClipboard(elementId) {
     var text = document.getElementById(elementId).innerText;
@@ -213,10 +200,9 @@ function copyToClipboard(elementId) {
 }
 document.fonts.ready.then(() => {
     const textElement = document.querySelector('#running-text');
-    const textWidth = textElement.scrollWidth / 2; // Since text is duplicated
-    const animationDuration = textWidth / 100; // Adjust the divisor to control speed
+    const textWidth = textElement.scrollWidth / 2; 
+    const animationDuration = textWidth / 100; 
 
-    // Set CSS variables
     document.documentElement.style.setProperty('--text-width', `${textWidth}px`);
     document.documentElement.style.setProperty('--animation-duration', `${animationDuration}s`);
 });
@@ -242,32 +228,23 @@ const translations = {
     }
 };
 
-// Set the default language
 let currentLanguage = 'est';
 
 function changeLanguage() {
     var languageBtn = document.getElementById('language-btn');
-
-    // Toggle the language
+  
     currentLanguage = currentLanguage === 'est' ? 'eng' : 'est';
-
-    // Update the language button text
+  
     languageBtn.innerText = translations[currentLanguage].languageButton;
-
-    // Update 'meist-content' text
+ 
     document.querySelector('#meist-content p').innerHTML = translations[currentLanguage]['meist-content-text'];
-
-    // Update 'projektid-content' text
     document.querySelector('#projektid-content p').innerText = translations[currentLanguage]['projektid-content-text'];
 
-    // Update running text
     const runningTextElements = document.querySelectorAll('#running-text .text');
     runningTextElements.forEach(element => {
         element.innerHTML = translations[currentLanguage]['running-text'];
     });
 
-    // Update navigation labels without changing HTML
-    // Select the <p> tags inside each navigation button and update their text
     document.querySelector('#meist-btn p').innerText = translations[currentLanguage]['nav-meist'];
     document.querySelector('#projektid-btn p').innerText = translations[currentLanguage]['nav-projektid'];
     document.querySelector('#kontakt-btn p').innerText = translations[currentLanguage]['nav-kontakt'];
@@ -278,21 +255,23 @@ function changeLanguage() {
         languageBtn.style.backgroundColor = '#DD0D7E';
     }
 }
+
 function scrollToSectionOnMobile(sectionId) {
-    if (window.innerWidth <= 768) { // Adjust the breakpoint as needed
+    if (window.innerWidth <= 768) { 
         const section = document.getElementById(sectionId);
         if (section) {
             const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
-            const offset = 500; // Adjust if you need to offset the scroll position
+            const offset = 500; 
             const targetPosition = sectionPosition - offset;
-            const duration = 400; // Duration in milliseconds
+            const duration = 500; 
 
             setTimeout(function() {
                 smoothScrollTo(targetPosition, duration);
-            }, 300);        
+            }, 200);        
         }
     }
 }
+
 function smoothScrollTo(targetPosition, duration) {
     const startPosition = window.pageYOffset || document.documentElement.scrollTop;
     const distance = targetPosition - startPosition;
@@ -319,8 +298,9 @@ function smoothScrollTo(targetPosition, duration) {
 
     window.requestAnimationFrame(animation);
 }
+
 function scrollToTop(duration, startPosition, callback) {
-    const targetPosition = 0; // We want to scroll to the top
+    const targetPosition = 0; 
     const distance = targetPosition - startPosition;
     let startTime = null;
 
@@ -334,7 +314,7 @@ function scrollToTop(duration, startPosition, callback) {
         if (timeElapsed < duration) {
             window.requestAnimationFrame(animation);
         } else {
-            // Ensure we end up exactly at the target position
+            
             window.scrollTo(0, targetPosition);
             if (typeof callback === 'function') {
                 callback();
