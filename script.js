@@ -267,7 +267,7 @@ function scrollToSectionOnMobile(sectionId) {
 
             setTimeout(function() {
                 smoothScrollTo(targetPosition, duration);
-            }, 200);        
+            }, 400);        
         }
     }
 }
