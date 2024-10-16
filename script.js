@@ -69,10 +69,14 @@ function performDOMUpdates() {
     navContainer.style.gap = window.innerWidth <= 768 ? '5vh' : '8vw';
 
     currentSection = null;
-
-    setTimeout(() => {
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            hideAllSections();
+        }, 600);
+    } else {
         hideAllSections();
-    }, 600);
+    }
+    
 }
 
 function hideAllSections() {

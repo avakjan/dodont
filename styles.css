@@ -173,7 +173,7 @@ body {
     align-self: end; 
 }
 #meist-content p { 
-    font-size: calc(1rem + 0.7vw); 
+    font-size: calc(1rem + 0.65vw); 
     width: 42vw; 
     font-family: neuehaasroman;
 }
