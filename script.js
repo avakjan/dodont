@@ -25,7 +25,6 @@ window.onload = function() {
 
 function resetPage() {
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    console.log('Current scroll position:', currentScrollPosition);
 
     if (window.innerWidth <= 768) {
         // Start the scroll animation
@@ -299,35 +298,34 @@ function smoothScrollTo(targetPosition, duration) {
     window.requestAnimationFrame(animation);
 }
 
-function scrollToTop(duration, startPosition, callback) {
-    const targetPosition = 0; 
-    const distance = targetPosition - startPosition;
-    let startTime = null;
+function scrollToTop(duration, startPosition) {
+    return new Promise((resolve, reject) => {
+        const targetPosition = 0; 
+        const distance = targetPosition - startPosition;
+        let startTime = null;
 
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
 
-        window.scrollTo(0, run);
+            window.scrollTo(0, run);
 
-        if (timeElapsed < duration) {
-            window.requestAnimationFrame(animation);
-        } else {
-            
-            window.scrollTo(0, targetPosition);
-            if (typeof callback === 'function') {
-                callback();
+            if (timeElapsed < duration) {
+                window.requestAnimationFrame(animation);
+            } else {
+                window.scrollTo(0, targetPosition);
+                resolve(); // Resolve the Promise when scrolling is complete
             }
         }
-    }
 
-    function easeInOutQuad(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
+        function easeInOutQuad(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return (c / 2) * t * t + b;
+            t--;
+            return (-c / 2) * (t * (t - 2) - 1) + b;
+        }
 
-    window.requestAnimationFrame(animation);
+        window.requestAnimationFrame(animation);
+    });
 }
