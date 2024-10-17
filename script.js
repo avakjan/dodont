@@ -112,7 +112,7 @@ function showProjektid() {
         resetPage();
     } else {
         hideAllSections();
-        document.getElementById('projektid-content').style.display = 'block';
+        document.getElementById('projektid-content').style.display = 'flex';
         document.getElementById('projektid-btn').classList.add('active');
         document.getElementById('gradient-bar').style.display = 'none';
         currentSection = 'projektid';
@@ -233,31 +233,62 @@ const translations = {
 
 let currentLanguage = 'est';
 
-function changeLanguage() {
-    var languageBtn = document.getElementById('language-btn');
+document.addEventListener("DOMContentLoaded", function () {
+    function changeLanguage() {
+      var languageBtn = document.getElementById('language-btn');
   
-    currentLanguage = currentLanguage === 'est' ? 'eng' : 'est';
+      if (!languageBtn) {
+        console.error('Language button not found.');
+        return;
+      }
   
-    languageBtn.innerText = translations[currentLanguage].languageButton;
- 
-    document.querySelector('#meist-content p').innerHTML = translations[currentLanguage]['meist-content-text'];
-    document.querySelector('#projektid-content p').innerText = translations[currentLanguage]['projektid-content-text'];
-
-    const runningTextElements = document.querySelectorAll('#running-text .text');
-    runningTextElements.forEach(element => {
+      currentLanguage = currentLanguage === 'est' ? 'eng' : 'est';
+  
+      languageBtn.innerText = translations[currentLanguage].languageButton;
+  
+      const meistContent = document.querySelector('#meist-content p');
+      if (meistContent) {
+        meistContent.innerHTML = translations[currentLanguage]['meist-content-text'];
+      }
+  
+      const projektidContent = document.querySelector('#projektid-content p');
+      if (projektidContent) {
+        projektidContent.innerText = translations[currentLanguage]['projektid-content-text'];
+      }
+  
+      const runningTextElements = document.querySelectorAll('#running-text .text');
+      runningTextElements.forEach(element => {
         element.innerHTML = translations[currentLanguage]['running-text'];
-    });
-
-    document.querySelector('#meist-btn p').innerText = translations[currentLanguage]['nav-meist'];
-    document.querySelector('#projektid-btn p').innerText = translations[currentLanguage]['nav-projektid'];
-    document.querySelector('#kontakt-btn p').innerText = translations[currentLanguage]['nav-kontakt'];
-    
-    if (languageBtn.innerText === 'Est') {
+      });
+  
+      const meistBtn = document.querySelector('#meist-btn p');
+      if (meistBtn) {
+        meistBtn.innerText = translations[currentLanguage]['nav-meist'];
+      }
+  
+      const projektidBtn = document.querySelector('#projektid-btn p');
+      if (projektidBtn) {
+        projektidBtn.innerText = translations[currentLanguage]['nav-projektid'];
+      }
+  
+      const kontaktBtn = document.querySelector('#kontakt-btn p');
+      if (kontaktBtn) {
+        kontaktBtn.innerText = translations[currentLanguage]['nav-kontakt'];
+      }
+  
+      if (languageBtn.innerText === 'Est') {
         languageBtn.style.backgroundColor = '#66726E';
-    } else {
+      } else {
         languageBtn.style.backgroundColor = '#DD0D7E';
+      }
     }
-}
+  
+    // Attach changeLanguage function to the button click event if it exists.
+    const languageBtn = document.getElementById('language-btn');
+    if (languageBtn) {
+      languageBtn.addEventListener('click', changeLanguage);
+    }
+  });
 
 function scrollToSectionOnMobile(sectionId) {
     if (window.innerWidth <= 768) { 
@@ -333,3 +364,17 @@ function scrollToTop(duration, startPosition) {
         window.requestAnimationFrame(animation);
     });
 }
+
+let scrollContainer = document.querySelector(".gallery");
+let backBtn = document.getElementById("backBtn");
+let nextBtn = document.getElementById("nextBtn");
+
+nextBtn.addEventListener("click", () => {
+  const containerWidth = scrollContainer.clientWidth;
+  scrollContainer.scrollBy({ left: containerWidth, behavior: 'smooth' });
+});
+
+backBtn.addEventListener("click", () => {
+  const containerWidth = scrollContainer.clientWidth;
+  scrollContainer.scrollBy({ left: -containerWidth, behavior: 'smooth' });
+});
