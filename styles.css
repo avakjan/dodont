@@ -11,7 +11,7 @@ body {
     height: 100vh;
     flex-direction: column;
     align-items: center;
-    gap: 3vw;
+    gap: 3vh;
 }
 
 /* Language Button */
@@ -139,45 +139,62 @@ body {
 }
 
 
-  .gallery {
+.gallery {
     width: 70vw;
     display: flex;
     overflow-x: scroll;
-    height: 50vh;
+    height: 62vh;
     overflow-y: hidden;
-  }
+}
 
-  .gallery div {
+.gallery div {
     width: 100%;
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     padding: 1vw;
     flex: none;
-  }
+}
 
-  .gallery div img {
+.gallery div img {
     width: 100%;
-  }
+}
 
-  .gallery::-webkit-scrollbar {
+.gallery img {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+.gallery img:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.gallery::-webkit-scrollbar {
     display: none;
-  }
+}
 
-  .gallery-wrap {
+.gallery-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0vw auto;
-    height: 50vh;
-  }
+    height: 62vh;
+}
+  
+.gallery p {
+    font-family: neuehaaslight;
+    font-size: 1.51vw;
+    margin-top: 3vw;
+    color: #66726E;
+}
 
-  #backBtn, #nextBtn {
+#backBtn, #nextBtn {
     width: 4vw;
     cursor: pointer;
-    margin: 1vw;
+    margin: 1vw 1vw 9vh 1vw;
     background: none;
     border: none;
-  }
+}
 
 
 /* Gradient Bar */
