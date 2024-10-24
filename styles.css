@@ -235,6 +235,7 @@ body {
 #meist-content p { 
     font-size: calc(1rem + 0.65vw); 
     width: 42vw;
+    margin-bottom: 4vw;
     height: 50vh;
     font-family: neuehaaslight;
 }

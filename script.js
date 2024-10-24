@@ -420,10 +420,24 @@ let nextBtn = document.getElementById("nextBtn");
 
 nextBtn.addEventListener("click", () => {
   const containerWidth = scrollContainer.clientWidth;
-  scrollContainer.scrollBy({ left: containerWidth, behavior: 'smooth' });
+  const maxScrollLeft = scrollContainer.scrollWidth - containerWidth;
+
+  if (scrollContainer.scrollLeft >= maxScrollLeft) {
+    // Reset to the start
+    scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    scrollContainer.scrollBy({ left: containerWidth, behavior: 'smooth' });
+  }
 });
 
 backBtn.addEventListener("click", () => {
   const containerWidth = scrollContainer.clientWidth;
-  scrollContainer.scrollBy({ left: -containerWidth, behavior: 'smooth' });
+
+  if (scrollContainer.scrollLeft <= 0) {
+    // Reset to the end
+    const maxScrollLeft = scrollContainer.scrollWidth - containerWidth;
+    scrollContainer.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+  } else {
+    scrollContainer.scrollBy({ left: -containerWidth, behavior: 'smooth' });
+  }
 });
