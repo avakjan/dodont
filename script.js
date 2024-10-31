@@ -107,7 +107,24 @@ function showMeist() {
     }
 }
 
+//PRAEGU UUENDAMISEL
 function showProjektid() {
+    if (currentSection === 'projektid') {
+        resetPage();
+    } else {
+        hideAllSections();
+        document.getElementById('projektid-content').style.display = 'block';
+        document.getElementById('projektid-btn').classList.add('active');
+        document.getElementById('gradient-bar').style.display = 'none';
+        currentSection = 'projektid';
+        showActiveText('projektid-btn');
+        hideOtherImagesMobile('projektid-btn'); 
+        scrollToSectionOnMobile('projektid-content');
+    }
+}
+
+//WITH CONTENT
+/*function showProjektid() {
     if (currentSection === 'projektid') {
         resetPage();
     } else {
@@ -120,7 +137,7 @@ function showProjektid() {
         hideOtherImagesMobile('projektid-btn'); 
         scrollToSectionOnMobile('projektid-content');
     }
-}
+}*/
 
 function showKontakt() {
     if (currentSection === 'kontakt') {

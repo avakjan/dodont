@@ -230,6 +230,7 @@ body {
     align-self: end; 
     overflow: auto;
     scrollbar-width: none;
+    margin-bottom: 7vh;
     -ms-overflow-style: none;
 }
 #meist-content p { 
@@ -243,7 +244,10 @@ body {
     display: none;
 }
 
-/* HETKEL UUENDAMISEL section (no projects to show)
+/*HETKEL UUENDAMISEL section (no projects to show)*/
+#projektid-content {
+    flex-wrap: wrap;
+}
 #projektid-content img {
     max-width: 100%;
     height: auto;
@@ -254,7 +258,8 @@ body {
     margin: 0 10vw;
     word-wrap: break-word;
     font-family: neuehaaslight;
-}*/
+}
+/**/
 #kontakt-content {
     font-size: 2em;
     color: black;
@@ -387,6 +392,7 @@ body {
         align-self: center;
         margin-right: 0;
         margin-top: 5vh;
+        margin-bottom: 0;
         overflow: visible;
     }
     #meist-content p {
@@ -395,13 +401,13 @@ body {
         height: 100%;
         margin-bottom: 5vh;
     }
-    /* HETKEL UUENDAMISEL section (no projects to show)
+    /*HETKEL UUENDAMISEL section (no projects to show)*/
     #projektid-content img {
         display: none;
     }
     #projektid-content p {
         margin: 10vh 10vw 0;
-    }*/
+    }
     #kontakt-content {
         gap: 10vh;
         font-size: 1.5em;
