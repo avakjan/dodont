@@ -21,7 +21,7 @@ body {
     background-color: #66726E;
     color: white;
     border: none;
-    font-size: 2em;
+    font-size: calc(1rem + 0.65vw);
     cursor: pointer;
     width: 3em;
     box-sizing: border-box;
@@ -254,7 +254,7 @@ body {
     padding: 0 10vw;
 }
 #projektid-content p {
-    font-size: 2em;
+    font-size: calc(1rem + 0.65vw);
     margin: 0 10vw;
     word-wrap: break-word;
     font-family: neuehaaslight;
@@ -397,7 +397,7 @@ body {
     }
     #meist-content p {
         font-size: calc(1rem + 1.55vw);
-        width: 85vw;
+        width: 88vw;
         height: 100%;
         margin-bottom: 5vh;
     }
