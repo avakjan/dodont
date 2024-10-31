@@ -232,24 +232,24 @@ const translations = {
         languageButton: 'Est',
         'meist-content-text': `<span class="coolvetica">Do don’t</span> on turundusagentuur, mis keskendub nooremale generatsioonile ning neile suunatud turunduskampaaniate loomisele ja elluviimisele. <br> <br>
         <span class="coolvetica">Meie väärtuspakkumised</span> <br>
-        Teeme klientidega tihedat koostööd, luues partnerlusi ühise edu nimel. <br>
-        Hoiame teie aega väärtuslikuna, pakkudes kiireid ja kvaliteetseid lahendusi. <br>
-        Keskendume alati tippkvaliteedile, et meie lahendused eristuksid ja avaldaksid mõju. <br>
-        Läbipaistvus ja aus suhtlus on meie töö aluseks, hoides teie huvid alati esikohal. <br>
-        Oleme valmis võtma vastu uusi väljakutseid ja leidma teie brändile parimad lahendused. <br>
-        Kohandame oma strateegiaid vastavalt teie eesmärkidele ja nägemusele. <br>
-        Oleme paindlikud ja kiiresti reageerivad, tagades õigeaegse suhtluse ja toe. <br>
-        Hindame tagasisidet ja näeme kriitikas võimalust areneda. <br>
-        Oleme pühendunud loovusele ja innovatsioonile, et hoida teie bränd värskena ja aktuaalsena. <br> <br>
+        &#8226;  Teeme klientidega tihedat koostööd, luues partnerlusi ühise edu nimel. <br>
+         &#8226;  Hoiame teie aega väärtuslikuna, pakkudes kiireid ja kvaliteetseid lahendusi. <br>
+        &#8226;  Keskendume alati tippkvaliteedile, et meie lahendused eristuksid ja avaldaksid mõju. <br>
+        &#8226;  Läbipaistvus ja aus suhtlus on meie töö aluseks, hoides teie huvid alati esikohal. <br>
+        &#8226;  Oleme valmis võtma vastu uusi väljakutseid ja leidma teie brändile parimad lahendused. <br>
+        &#8226;  Kohandame oma strateegiaid vastavalt teie eesmärkidele ja nägemusele. <br>
+        &#8226;  Oleme paindlikud ja kiiresti reageerivad, tagades õigeaegse suhtluse ja toe. <br>
+        &#8226;  Hindame tagasisidet ja näeme kriitikas võimalust areneda. <br>
+        &#8226;  Oleme pühendunud loovusele ja innovatsioonile, et hoida teie bränd värskena ja aktuaalsena. <br> <br>
         <span class="coolvetica">Mida me pakume?</span> <br>
-        Turundust mis spetsialiseerub Gen Z -le. <br>
-        Turundust mis arvestab Teie ettevõtte väärtustega. <br>
-        Turundust mis on vaba, humoorikas ja väärtuslikku sisuga. <br> <br>
+        &#8226; Turundust, mis spetsialiseerub Gen Z-le. <br>
+        &#8226; Turundust, mis arvestab Teie ettevõtte väärtustega. <br>
+        &#8226; Turundust, mis on vaba, humoorikas ja väärtuslikku sisuga. <br> <br>
         <span class="coolvetica">Meie tiim</span> <br>
         Meie tiim koosneb kolmest liikmest: <br>
         Mia – klienditugi, müügijuht <br>
         Diana – graafiline disainer <br>
-        Hermiina - turundusjuht`,
+        Hermiina – turundusjuht`,
         'gallery1-text': `<span class="coolvetica" style="color: #000000;">Do, don't agentuur</span> <br>
         Visuaalne identiteet, kampaania käivitamine`,
         'gallery2-text': `<span class="coolvetica" style="color: #000000;">Teine projekt</span> <br>
@@ -263,19 +263,19 @@ const translations = {
         languageButton: 'Eng',
         'meist-content-text': `<span class="coolvetica">Do don’t</span> is a marketing agency focused on the younger generation and creating and executing marketing campaigns targeted at them. <br> <br>
         <span class="coolvetica">Our value propositions</span> <br>
-        We work closely with clients, building partnerships for mutual success. <br>
-        Your time is valuable. We focus on delivering fast, high-quality results. <br>
-        Excellence drives us, ensuring our solutions stand out and make an impact. <br>
-        Transparency and honesty are at the core of our business, always prioritizing your best interests. <br>
-        We're ready for new challenges, always seeking the best solutions for your brand. <br>
-        We adapt our strategies to align with your goals and vision. <br>
-        We stay agile and responsive, ensuring timely communication and support. <br>
-        We value feedback and see it as an opportunity for growth. <br>
-        We embrace creativity to keep your brand fresh and relevant. <br> <br>
+        &#8226; We work closely with clients, building partnerships for mutual success. <br>
+        &#8226; Your time is valuable. We focus on delivering fast, high-quality results. <br>
+        &#8226; Excellence drives us, ensuring our solutions stand out and make an impact. <br>
+        &#8226; Transparency and honesty are at the core of our business, always prioritizing your best interests. <br>
+        &#8226; We're ready for new challenges, always seeking the best solutions for your brand. <br>
+        &#8226; We adapt our strategies to align with your goals and vision. <br>
+        &#8226; We stay agile and responsive, ensuring timely communication and support. <br>
+        &#8226; We value feedback and see it as an opportunity for growth. <br>
+        &#8226; We embrace creativity to keep your brand fresh and relevant. <br> <br>
         <span class="coolvetica">What do we offer?</span> <br>
-        Marketing that specializes on Gen Z. <br>
-        Marketing that takes your companies values into account. <br>
-        Marketing that is casual, humorous and filled with valuable content. <br> <br>
+        &#8226; Marketing, that specializes on Gen Z. <br>
+        &#8226; Marketing, that takes your companies values into account. <br>
+        &#8226; Marketing, that is casual, humorous and filled with valuable content. <br> <br>
         <span class="coolvetica">Our team</span> <br>
         Our team consists of three individuals: <br>
         Mia – customer support, sales manager <br>
